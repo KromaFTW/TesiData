@@ -8,7 +8,10 @@ import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
+import lombok.Data;
 
+
+@Data
 @Node("EsperienzaLavorativa")
 public class EsperienzaLavorativaNeo4j {
 
@@ -28,40 +31,18 @@ public class EsperienzaLavorativaNeo4j {
     @Property("descrizione")
     private String descrizione;
 
+    
+    // ------- AZIENDA -------
+    @Relationship(type = "AZIENDA")
+
+    private Set<AziendaNeo4j> aziende;
     // ------- UTENTE -------
     @Relationship(type = "LAVORATO_DA")
     private Set<UtenteNeo4j> utenti;
+
+
     
-    public Set<UtenteNeo4j> getUtenti() {
-        return utenti;
-    }
 
-    // ------- AZIENDA -------
-    @Relationship(type = "AZIENDA")
-    private Set<AziendaNeo4j> aziende;
 
-    public Set<AziendaNeo4j> aziende() {
-        return aziende;
-    } 
 
-    // ------ GETTER ------
-    public Long getId() {
-        return id;
-    }
-
-    public Date getDataInizio() {
-        return dataInizio;
-    }
-
-    public Date getDataFine() {
-        return dataFine;
-    }
-
-    public String getPosizione() {
-        return posizione;
-    }
-
-    public String getDescrizione() {
-        return descrizione;
-    }
 }

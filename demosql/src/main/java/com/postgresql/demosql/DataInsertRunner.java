@@ -23,6 +23,7 @@ public class DataInsertRunner {
     public void runDataInsert() throws Exception {
         if (runDataInsertEnabled) {
             // Leggo file SQL
+            @SuppressWarnings("resource")
             String sql = new BufferedReader(new InputStreamReader(new ClassPathResource("data_insert.sql").getInputStream()))
                     .lines().collect(Collectors.joining("\n"));
 

@@ -2,7 +2,6 @@ package com.postgresql.demosql.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.postgresql.demosql.entita.Competenza;
 import com.postgresql.demosql.repository.CompetenzaRepository;
@@ -12,7 +11,6 @@ public class CompetenzaService {
     
     private final CompetenzaRepository competenzaRepository;
 
-    @Autowired
     public CompetenzaService(CompetenzaRepository competenzaRepository){
         this.competenzaRepository = competenzaRepository;
     }

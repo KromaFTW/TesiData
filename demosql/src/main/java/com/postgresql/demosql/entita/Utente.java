@@ -1,5 +1,8 @@
 package com.postgresql.demosql.entita;
 
+import java.util.Date;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,8 +14,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-import java.util.Date;
-import java.util.Set;
 
 
 
@@ -38,17 +39,13 @@ public class Utente {
     
     private String genere;
     
-    public String getNome() {
-        return nome;
-    }
+    
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
     @ManyToOne
     @JoinColumn(name = "luogo_id") 
     private Luogo luogo_id; 
     
+    // Togliere mappedBy? utente_id
     @ManyToMany(mappedBy = "utenti")
     private Set<EsperienzaLavorativa> esperienzeLavorative;
    
@@ -60,7 +57,6 @@ public class Utente {
     )
     private Set<Utente> amici;
   
-
 
 }
 

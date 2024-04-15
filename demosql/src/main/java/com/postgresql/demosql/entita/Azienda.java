@@ -21,20 +21,17 @@ public class Azienda {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String nome;
     private String settore;
-    //private String citta;
 
     @ManyToOne
-    @JoinColumn(name = "luogo_id", referencedColumnName = "id")
-    private Luogo luogo_id; 
+    @JoinColumn(name = "luogo_id")
+    private Luogo luogo_id;
 
-
-
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany
     @JoinTable(
-        name = "EsperienzaLavorativa_Azienda",
+        name = "Esperienza_Lavorativa_Azienda",
         inverseJoinColumns = { @JoinColumn(name = "esperienza_Alavorativa_id") },
         joinColumns = { @JoinColumn(name = "azienda_id") }
     )

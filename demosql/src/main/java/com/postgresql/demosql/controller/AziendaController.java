@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.postgresql.demosql.EntitaNeo4j.AziendaNeo4j;
 import com.postgresql.demosql.entita.Azienda;
+import com.postgresql.demosql.mapper.AziendaNeo4jMapper;
+import com.postgresql.demosql.model.AziendaModel;
 import com.postgresql.demosql.repository_Neo4j.AziendaNeo4jRepository;
 import com.postgresql.demosql.service.AziendaService;
 
@@ -22,9 +24,11 @@ public class AziendaController {
     private final AziendaService aziendaService;
 
     private AziendaNeo4jRepository aziendaNeo4jRepository;
-    public AziendaController(AziendaService aziendaService, AziendaNeo4jRepository aziendaNeo4jRepository) {
+    private final AziendaNeo4jMapper aziendaNeo4jMapper;
+    public AziendaController(AziendaService aziendaService, AziendaNeo4jRepository aziendaNeo4jRepository, AziendaNeo4jMapper aziendaNeo4jMapper) {
         this.aziendaService = aziendaService;
         this.aziendaNeo4jRepository = aziendaNeo4jRepository;
+        this.aziendaNeo4jMapper = aziendaNeo4jMapper;
     }
 
     // SALVO INTERA LISTA LUOGO
@@ -32,9 +36,17 @@ public class AziendaController {
     public void salvoLuogoSuNeo4j(@RequestBody List<AziendaNeo4j> azienda) {
         aziendaNeo4jRepository.saveAll(azienda);
     }
+
     @GetMapping
     public List<Azienda> getAzienda() {
         return aziendaService.getAzienda();
+    }
+    
+    @PostMapping("/aggiungi")
+    public void aggiungiNeo4j() {
+        List<AziendaModel> aziende = aziendaService.getAllAzienda();
+        List<AziendaNeo4j> aziendeNeo4j = aziendaNeo4jMapper.modelToNeo4jList(aziende);
+        aziendaNeo4jRepository.saveAll(aziendeNeo4j);
     }
 
     @GetMapping("/{id}")
@@ -51,5 +63,5 @@ public class AziendaController {
     public Azienda createAzienda(@RequestBody Azienda azienda) {
         return aziendaService.createAzienda(azienda);
     }
-    
+
 }

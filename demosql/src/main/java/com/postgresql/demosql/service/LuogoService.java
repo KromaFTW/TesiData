@@ -2,7 +2,6 @@ package com.postgresql.demosql.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.postgresql.demosql.entita.Luogo;
@@ -12,7 +11,6 @@ import com.postgresql.demosql.repository.LuogoRepo;
 public class LuogoService {
     private final LuogoRepo luogoRepo;
 
-    @Autowired
     public LuogoService(LuogoRepo luogoRepo){
         this.luogoRepo = luogoRepo;
     }

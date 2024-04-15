@@ -76,15 +76,12 @@ INSERT INTO Esperienza_Lavorativa ( data_inizio, data_fine, posizione, descrizio
 
 -- INSERT AMICIZIA tra Utenti 
 INSERT INTO amicizia (utente_id, amico_id) VALUES
-    (2, 1), (2, 3), (2, 4),
-    (1,1), (1, 2), (1, 3), (4, 1), (2,9),
-    (3,2),(5,4), (6,2), (6,1), (5,2);
+        (9, 1), (1, 2), (1, 3), (1,4), (2, 3), (3, 2), (4, 2);
 
 -- INSERT INTO Esperienza_Lavorativa_Azienda
 INSERT INTO Esperienza_Lavorativa_Azienda (azienda_id, esperienza_Alavorativa_id) 
-VALUES (1,1), (2,1), (2,3), (3,1), (1,4), 
-       (1,5);
+VALUES (2,2);
 
 -- INSERT INTO esperienza_lavorativa_utente
 INSERT INTO esperienza_lavorativa_utente (esperienza_Ulavorativa_id, utente_id) 
-VALUES (1,1),(1,3),(1,2),(1,4),(1,5),(5,3),(5,4), (2,3);
+VALUES (2,2);

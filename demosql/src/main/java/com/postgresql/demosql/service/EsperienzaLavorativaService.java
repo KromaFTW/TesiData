@@ -2,7 +2,6 @@ package com.postgresql.demosql.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.postgresql.demosql.entita.EsperienzaLavorativa;
@@ -12,7 +11,7 @@ import com.postgresql.demosql.repository.EsperienzaLavorativaRepo;
 public class EsperienzaLavorativaService {
     private final EsperienzaLavorativaRepo esperienzalavorativaRepo;
 
-    @Autowired
+    
     public EsperienzaLavorativaService(EsperienzaLavorativaRepo esperienzalavorativaRepo) {
         this.esperienzalavorativaRepo = esperienzalavorativaRepo;
     }
