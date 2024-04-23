@@ -1,11 +1,7 @@
 package com.postgresql.demosql.mapper;
 
-import com.postgresql.demosql.entita.Azienda;
-import com.postgresql.demosql.entita.EsperienzaLavorativa;
 import com.postgresql.demosql.entita.Luogo;
 import com.postgresql.demosql.entita.Utente;
-import com.postgresql.demosql.model.AziendaModel;
-import com.postgresql.demosql.model.EsperienzaLavorativaModel;
 import com.postgresql.demosql.model.LuogoModel;
 import com.postgresql.demosql.model.UtenteModel;
 import java.util.ArrayList;
@@ -17,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-15T11:13:42+0200",
+    date = "2024-04-18T15:24:51+0200",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240325-1403, environment: Java 17.0.10 (Eclipse Adoptium)"
 )
 @Component
@@ -29,21 +25,42 @@ public class UtenteMapperImpl implements UtenteMapper {
             return null;
         }
 
-        UtenteModel.UtenteModelBuilder utenteModel = UtenteModel.builder();
+        UtenteModel utenteModel = new UtenteModel();
 
-        utenteModel.amici( utenteSetToUtenteModelSet( entity.getAmici() ) );
-        utenteModel.cognome( entity.getCognome() );
-        utenteModel.dataNascita( entity.getDataNascita() );
-        utenteModel.email( entity.getEmail() );
-        utenteModel.esperienzeLavorative( esperienzaLavorativaSetToEsperienzaLavorativaModelSet( entity.getEsperienzeLavorative() ) );
-        utenteModel.genere( entity.getGenere() );
-        utenteModel.id( entity.getId() );
-        utenteModel.luogo_id( luogoToLuogoModel( entity.getLuogo_id() ) );
-        utenteModel.nome( entity.getNome() );
-        utenteModel.telefono( entity.getTelefono() );
-        utenteModel.username( entity.getUsername() );
+        utenteModel.setAmici( utenteSetToUtenteModelSet( entity.getAmici() ) );
+        utenteModel.setCognome( entity.getCognome() );
+        utenteModel.setDataNascita( entity.getDataNascita() );
+        utenteModel.setEmail( entity.getEmail() );
+        utenteModel.setGenere( entity.getGenere() );
+        utenteModel.setId( entity.getId() );
+        utenteModel.setLuogo_id( luogoToLuogoModel( entity.getLuogo_id() ) );
+        utenteModel.setNome( entity.getNome() );
+        utenteModel.setTelefono( entity.getTelefono() );
+        utenteModel.setUsername( entity.getUsername() );
 
-        return utenteModel.build();
+        return utenteModel;
+    }
+
+    @Override
+    public Utente modelToEntity(UtenteModel model) {
+        if ( model == null ) {
+            return null;
+        }
+
+        Utente utente = new Utente();
+
+        utente.setAmici( utenteModelSetToUtenteSet( model.getAmici() ) );
+        utente.setCognome( model.getCognome() );
+        utente.setDataNascita( model.getDataNascita() );
+        utente.setEmail( model.getEmail() );
+        utente.setGenere( model.getGenere() );
+        utente.setId( model.getId() );
+        utente.setLuogo_id( luogoModelToLuogo( model.getLuogo_id() ) );
+        utente.setNome( model.getNome() );
+        utente.setTelefono( model.getTelefono() );
+        utente.setUsername( model.getUsername() );
+
+        return utente;
     }
 
     @Override
@@ -73,19 +90,6 @@ public class UtenteMapperImpl implements UtenteMapper {
         return set1;
     }
 
-    protected Set<EsperienzaLavorativaModel> esperienzaLavorativaSetToEsperienzaLavorativaModelSet(Set<EsperienzaLavorativa> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<EsperienzaLavorativaModel> set1 = new LinkedHashSet<EsperienzaLavorativaModel>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( EsperienzaLavorativa esperienzaLavorativa : set ) {
-            set1.add( esperienzaLavorativaToEsperienzaLavorativaModel( esperienzaLavorativa ) );
-        }
-
-        return set1;
-    }
-
     protected LuogoModel luogoToLuogoModel(Luogo luogo) {
         if ( luogo == null ) {
             return null;
@@ -99,50 +103,29 @@ public class UtenteMapperImpl implements UtenteMapper {
         return luogoModel.build();
     }
 
-    protected AziendaModel aziendaToAziendaModel(Azienda azienda) {
-        if ( azienda == null ) {
-            return null;
-        }
-
-        AziendaModel.AziendaModelBuilder aziendaModel = AziendaModel.builder();
-
-        aziendaModel.esperienzeLavorative( esperienzaLavorativaSetToEsperienzaLavorativaModelSet( azienda.getEsperienzeLavorative() ) );
-        aziendaModel.id( azienda.getId() );
-        aziendaModel.luogo_id( luogoToLuogoModel( azienda.getLuogo_id() ) );
-        aziendaModel.nome( azienda.getNome() );
-        aziendaModel.settore( azienda.getSettore() );
-
-        return aziendaModel.build();
-    }
-
-    protected Set<AziendaModel> aziendaSetToAziendaModelSet(Set<Azienda> set) {
+    protected Set<Utente> utenteModelSetToUtenteSet(Set<UtenteModel> set) {
         if ( set == null ) {
             return null;
         }
 
-        Set<AziendaModel> set1 = new LinkedHashSet<AziendaModel>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( Azienda azienda : set ) {
-            set1.add( aziendaToAziendaModel( azienda ) );
+        Set<Utente> set1 = new LinkedHashSet<Utente>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
+        for ( UtenteModel utenteModel : set ) {
+            set1.add( modelToEntity( utenteModel ) );
         }
 
         return set1;
     }
 
-    protected EsperienzaLavorativaModel esperienzaLavorativaToEsperienzaLavorativaModel(EsperienzaLavorativa esperienzaLavorativa) {
-        if ( esperienzaLavorativa == null ) {
+    protected Luogo luogoModelToLuogo(LuogoModel luogoModel) {
+        if ( luogoModel == null ) {
             return null;
         }
 
-        EsperienzaLavorativaModel.EsperienzaLavorativaModelBuilder esperienzaLavorativaModel = EsperienzaLavorativaModel.builder();
+        Luogo luogo = new Luogo();
 
-        esperienzaLavorativaModel.aziende( aziendaSetToAziendaModelSet( esperienzaLavorativa.getAziende() ) );
-        esperienzaLavorativaModel.dataFine( esperienzaLavorativa.getDataFine() );
-        esperienzaLavorativaModel.dataInizio( esperienzaLavorativa.getDataInizio() );
-        esperienzaLavorativaModel.descrizione( esperienzaLavorativa.getDescrizione() );
-        esperienzaLavorativaModel.id( esperienzaLavorativa.getId() );
-        esperienzaLavorativaModel.posizione( esperienzaLavorativa.getPosizione() );
-        esperienzaLavorativaModel.utenti( utenteSetToUtenteModelSet( esperienzaLavorativa.getUtenti() ) );
+        luogo.setId( luogoModel.getId() );
+        luogo.setNome( luogoModel.getNome() );
 
-        return esperienzaLavorativaModel.build();
+        return luogo;
     }
 }

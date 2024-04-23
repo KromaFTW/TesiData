@@ -38,19 +38,19 @@ INSERT INTO utente (nome, cognome, data_Nascita, email, telefono, username, gene
 
 
 -- INSERT COMPETENZA 
-INSERT INTO competenza (nome, utente_id) VALUES 
-    ('Programmazione Java', 1),
-    ('Programmazione Java', 1),
-    ('Programmazione Python', 1),
-    ('Gestione progetti', 2),
-    ('Marketing digitale', 3),
-    ('Grafica design', 4),
-    ('Sviluppo web', 5),
-    ('Analisi dati', 6),
-    ('Gestione risorse umane', 7),
-    ('Architettura software', 8),
-    ('Networking', 9),
-    ('Copywriting', 10);
+INSERT INTO competenza (nome) VALUES 
+    ('Programmazione Java'),
+    ('Programmazione Python'),
+    ('Gestione progetti'),
+    ('Marketing digitale'),
+    ('Grafica design'),
+    ('Sviluppo web'),
+    ('Analisi dati'),
+    ('Gestione risorse umane'),
+    ('Architettura software'),
+    ('Networking'),
+    ('Copywriting');
+
 
 
 -- INSERT AZIENDA 
@@ -67,21 +67,24 @@ INSERT INTO Azienda (nome, settore, luogo_id) VALUES
     ('Microsoft', 'Tecnologia', 9);
 
 -- INSERT ESPERIENZA_LAVORATIVA 
-INSERT INTO Esperienza_Lavorativa ( data_inizio, data_fine, posizione, descrizione) VALUES
-    ('2020-01-01', '2021-01-01', 'Sviluppatore Software', 'Sviluppo di applicazioni web'),
-    ('2019-05-01', '2020-05-01', 'Analista di Mercato', 'Analisi di dati di mercato e tendenze'),
-    ('2018-09-01', '2019-09-01', 'Ingegnere', 'Sviluppo di tecnologie avanzate'),
-    ('2017-03-01', '2018-03-01', 'Ingegnere Software', 'Progettazione e sviluppo di software avanzati'),
-    ('2016-07-01', '2017-07-01', 'Ricercatore Biomedico', 'Ricerca e sviluppo di nuovi farmaci');
-
+INSERT INTO esperienza_lavorativa ( data_inizio, data_fine, posizione, descrizione, azienda_id, utente_id) VALUES
+    ('2020-01-01', '2021-01-01', 'Sviluppatore Software', 'Sviluppo di applicazioni web',1,2),
+    ('2019-05-01', '2020-05-01', 'Analista di Mercato', 'Analisi di dati di mercato e tendenze',2,2),
+    ('2018-09-01', '2019-09-01', 'Ingegnere', 'Sviluppo di tecnologie avanzate',3,4),
+    ('2017-03-01', '2018-03-01', 'Ingegnere Software', 'Progettazione e sviluppo di software avanzati',4,12),
+    ('2016-07-01', '2017-07-01', 'Ricercatore Biomedico', 'Ricerca e sviluppo di nuovi farmaci',2,5),
+    ('2015-01-01', '2016-01-01', 'Project Manager', 'Gestione di progetti complessi', 5, 7),
+    ('2014-06-01', '2015-06-01', 'Analista Finanziario', 'Analisi dei mercati finanziari', 6, 8),
+    ('2013-10-01', '2014-10-01', 'Sviluppatore Mobile', 'Sviluppo di applicazioni per dispositivi mobili', 7, 3),
+    ('2012-04-01', '2013-04-01', 'Marketing Manager', 'Pianificazione e gestione delle strategie di marketing', 8, 9),
+    ('2011-08-01', '2012-08-01', 'Consulente Tecnico', 'Consulenza su soluzioni tecnologiche', 9, 6),
+    ('2010-12-01', '2011-12-01', 'Ingegnere Elettronico', 'Progettazione di circuiti elettronici', 10, 4),
+    ('2009-03-01', '2010-03-01', 'Specialista SEO', 'Ottimizzazione dei motori di ricerca', 2, 1),
+    ('2008-07-01', '2009-07-01', 'Analista di Dati', 'Analisi statistica e interpretazione dei dati', 1, 10),
+    ('2007-11-01', '2008-11-01', 'Ingegnere delle Telecomunicazioni', 'Sviluppo di reti di telecomunicazioni', 4, 11),
+    ('2006-05-01', '2007-05-01', 'Analista di Sistemi', 'Analisi e progettazione di sistemi informatici', 5, 2);
 -- INSERT AMICIZIA tra Utenti 
 INSERT INTO amicizia (utente_id, amico_id) VALUES
-        (9, 1), (1, 2), (1, 3), (1,4), (2, 3), (3, 2), (4, 2);
+        (9, 1), (1, 2), (1, 3), (1,4), (2, 3), (3, 2), (4, 2), (5,3),
+        (6, 3), (6, 9);
 
--- INSERT INTO Esperienza_Lavorativa_Azienda
-INSERT INTO Esperienza_Lavorativa_Azienda (azienda_id, esperienza_Alavorativa_id) 
-VALUES (2,2);
-
--- INSERT INTO esperienza_lavorativa_utente
-INSERT INTO esperienza_lavorativa_utente (esperienza_Ulavorativa_id, utente_id) 
-VALUES (2,2);

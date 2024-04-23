@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-15T11:13:42+0200",
+    date = "2024-04-18T15:15:18+0200",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240325-1403, environment: Java 17.0.10 (Eclipse Adoptium)"
 )
 @Component
@@ -31,13 +31,13 @@ public class EsperienzaLavorativaNeo4jMapperImpl implements EsperienzaLavorativa
 
         EsperienzaLavorativaNeo4j esperienzaLavorativaNeo4j = new EsperienzaLavorativaNeo4j();
 
-        esperienzaLavorativaNeo4j.setAziende( aziendaModelSetToAziendaNeo4jSet( esperienzaModel.getAziende() ) );
+        esperienzaLavorativaNeo4j.setAzienda( aziendaModelToAziendaNeo4j( esperienzaModel.getAzienda() ) );
         esperienzaLavorativaNeo4j.setDataFine( esperienzaModel.getDataFine() );
         esperienzaLavorativaNeo4j.setDataInizio( esperienzaModel.getDataInizio() );
         esperienzaLavorativaNeo4j.setDescrizione( esperienzaModel.getDescrizione() );
         esperienzaLavorativaNeo4j.setId( esperienzaModel.getId() );
         esperienzaLavorativaNeo4j.setPosizione( esperienzaModel.getPosizione() );
-        esperienzaLavorativaNeo4j.setUtenti( utenteModelSetToUtenteNeo4jSet( esperienzaModel.getUtenti() ) );
+        esperienzaLavorativaNeo4j.setUtente( utenteModelToUtenteNeo4j( esperienzaModel.getUtente() ) );
 
         return esperienzaLavorativaNeo4j;
     }
@@ -54,19 +54,6 @@ public class EsperienzaLavorativaNeo4jMapperImpl implements EsperienzaLavorativa
         }
 
         return list;
-    }
-
-    protected Set<EsperienzaLavorativaNeo4j> esperienzaLavorativaModelSetToEsperienzaLavorativaNeo4jSet(Set<EsperienzaLavorativaModel> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<EsperienzaLavorativaNeo4j> set1 = new LinkedHashSet<EsperienzaLavorativaNeo4j>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( EsperienzaLavorativaModel esperienzaLavorativaModel : set ) {
-            set1.add( modelToNeo4j( esperienzaLavorativaModel ) );
-        }
-
-        return set1;
     }
 
     protected LuogoNeo4j luogoModelToLuogoNeo4j(LuogoModel luogoModel) {
@@ -89,26 +76,12 @@ public class EsperienzaLavorativaNeo4jMapperImpl implements EsperienzaLavorativa
 
         AziendaNeo4j aziendaNeo4j = new AziendaNeo4j();
 
-        aziendaNeo4j.setEsperienzeLavorative( esperienzaLavorativaModelSetToEsperienzaLavorativaNeo4jSet( aziendaModel.getEsperienzeLavorative() ) );
         aziendaNeo4j.setId( aziendaModel.getId() );
         aziendaNeo4j.setLuogo_id( luogoModelToLuogoNeo4j( aziendaModel.getLuogo_id() ) );
         aziendaNeo4j.setNome( aziendaModel.getNome() );
         aziendaNeo4j.setSettore( aziendaModel.getSettore() );
 
         return aziendaNeo4j;
-    }
-
-    protected Set<AziendaNeo4j> aziendaModelSetToAziendaNeo4jSet(Set<AziendaModel> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<AziendaNeo4j> set1 = new LinkedHashSet<AziendaNeo4j>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( AziendaModel aziendaModel : set ) {
-            set1.add( aziendaModelToAziendaNeo4j( aziendaModel ) );
-        }
-
-        return set1;
     }
 
     protected Set<UtenteNeo4j> utenteModelSetToUtenteNeo4jSet(Set<UtenteModel> set) {
@@ -135,7 +108,6 @@ public class EsperienzaLavorativaNeo4jMapperImpl implements EsperienzaLavorativa
         utenteNeo4j.setCognome( utenteModel.getCognome() );
         utenteNeo4j.setDataNascita( utenteModel.getDataNascita() );
         utenteNeo4j.setEmail( utenteModel.getEmail() );
-        utenteNeo4j.setEsperienzeLavorative( esperienzaLavorativaModelSetToEsperienzaLavorativaNeo4jSet( utenteModel.getEsperienzeLavorative() ) );
         utenteNeo4j.setGenere( utenteModel.getGenere() );
         utenteNeo4j.setId( utenteModel.getId() );
         utenteNeo4j.setLuogo_id( luogoModelToLuogoNeo4j( utenteModel.getLuogo_id() ) );

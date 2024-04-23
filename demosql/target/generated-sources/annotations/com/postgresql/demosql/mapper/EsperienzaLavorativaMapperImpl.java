@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-15T11:13:42+0200",
+    date = "2024-04-18T15:15:18+0200",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240325-1403, environment: Java 17.0.10 (Eclipse Adoptium)"
 )
 @Component
@@ -31,13 +31,13 @@ public class EsperienzaLavorativaMapperImpl implements EsperienzaLavorativaMappe
 
         EsperienzaLavorativaModel.EsperienzaLavorativaModelBuilder esperienzaLavorativaModel = EsperienzaLavorativaModel.builder();
 
-        esperienzaLavorativaModel.aziende( aziendaSetToAziendaModelSet( entity.getAziende() ) );
+        esperienzaLavorativaModel.azienda( aziendaToAziendaModel( entity.getAzienda() ) );
         esperienzaLavorativaModel.dataFine( entity.getDataFine() );
         esperienzaLavorativaModel.dataInizio( entity.getDataInizio() );
         esperienzaLavorativaModel.descrizione( entity.getDescrizione() );
         esperienzaLavorativaModel.id( entity.getId() );
         esperienzaLavorativaModel.posizione( entity.getPosizione() );
-        esperienzaLavorativaModel.utenti( utenteSetToUtenteModelSet( entity.getUtenti() ) );
+        esperienzaLavorativaModel.utente( utenteToUtenteModel( entity.getUtente() ) );
 
         return esperienzaLavorativaModel.build();
     }
@@ -54,19 +54,6 @@ public class EsperienzaLavorativaMapperImpl implements EsperienzaLavorativaMappe
         }
 
         return list;
-    }
-
-    protected Set<EsperienzaLavorativaModel> esperienzaLavorativaSetToEsperienzaLavorativaModelSet(Set<EsperienzaLavorativa> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<EsperienzaLavorativaModel> set1 = new LinkedHashSet<EsperienzaLavorativaModel>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( EsperienzaLavorativa esperienzaLavorativa : set ) {
-            set1.add( entityToModel( esperienzaLavorativa ) );
-        }
-
-        return set1;
     }
 
     protected LuogoModel luogoToLuogoModel(Luogo luogo) {
@@ -89,26 +76,12 @@ public class EsperienzaLavorativaMapperImpl implements EsperienzaLavorativaMappe
 
         AziendaModel.AziendaModelBuilder aziendaModel = AziendaModel.builder();
 
-        aziendaModel.esperienzeLavorative( esperienzaLavorativaSetToEsperienzaLavorativaModelSet( azienda.getEsperienzeLavorative() ) );
         aziendaModel.id( azienda.getId() );
         aziendaModel.luogo_id( luogoToLuogoModel( azienda.getLuogo_id() ) );
         aziendaModel.nome( azienda.getNome() );
         aziendaModel.settore( azienda.getSettore() );
 
         return aziendaModel.build();
-    }
-
-    protected Set<AziendaModel> aziendaSetToAziendaModelSet(Set<Azienda> set) {
-        if ( set == null ) {
-            return null;
-        }
-
-        Set<AziendaModel> set1 = new LinkedHashSet<AziendaModel>( Math.max( (int) ( set.size() / .75f ) + 1, 16 ) );
-        for ( Azienda azienda : set ) {
-            set1.add( aziendaToAziendaModel( azienda ) );
-        }
-
-        return set1;
     }
 
     protected Set<UtenteModel> utenteSetToUtenteModelSet(Set<Utente> set) {
@@ -129,20 +102,19 @@ public class EsperienzaLavorativaMapperImpl implements EsperienzaLavorativaMappe
             return null;
         }
 
-        UtenteModel.UtenteModelBuilder utenteModel = UtenteModel.builder();
+        UtenteModel utenteModel = new UtenteModel();
 
-        utenteModel.amici( utenteSetToUtenteModelSet( utente.getAmici() ) );
-        utenteModel.cognome( utente.getCognome() );
-        utenteModel.dataNascita( utente.getDataNascita() );
-        utenteModel.email( utente.getEmail() );
-        utenteModel.esperienzeLavorative( esperienzaLavorativaSetToEsperienzaLavorativaModelSet( utente.getEsperienzeLavorative() ) );
-        utenteModel.genere( utente.getGenere() );
-        utenteModel.id( utente.getId() );
-        utenteModel.luogo_id( luogoToLuogoModel( utente.getLuogo_id() ) );
-        utenteModel.nome( utente.getNome() );
-        utenteModel.telefono( utente.getTelefono() );
-        utenteModel.username( utente.getUsername() );
+        utenteModel.setAmici( utenteSetToUtenteModelSet( utente.getAmici() ) );
+        utenteModel.setCognome( utente.getCognome() );
+        utenteModel.setDataNascita( utente.getDataNascita() );
+        utenteModel.setEmail( utente.getEmail() );
+        utenteModel.setGenere( utente.getGenere() );
+        utenteModel.setId( utente.getId() );
+        utenteModel.setLuogo_id( luogoToLuogoModel( utente.getLuogo_id() ) );
+        utenteModel.setNome( utente.getNome() );
+        utenteModel.setTelefono( utente.getTelefono() );
+        utenteModel.setUsername( utente.getUsername() );
 
-        return utenteModel.build();
+        return utenteModel;
     }
 }
