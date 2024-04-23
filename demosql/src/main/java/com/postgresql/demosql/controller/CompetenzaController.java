@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.postgresql.demosql.entita.Competenza;
+import com.postgresql.demosql.model.CompetenzaModel;
 import com.postgresql.demosql.service.CompetenzaService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class CompetenzaController {
     
     private final CompetenzaService competenzaService;
-
+    
     public CompetenzaController(CompetenzaService competenzaService) {
         this.competenzaService = competenzaService;
     }
 
     @GetMapping
-    public List<Competenza> getAllCompetenze() {
+    public List<CompetenzaModel> getAllCompetenze() {
         return competenzaService.getAllCompetenze();
     }
 

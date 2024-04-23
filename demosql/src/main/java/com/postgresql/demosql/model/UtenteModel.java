@@ -3,15 +3,11 @@ package com.postgresql.demosql.model;
 import java.util.Date;
 import java.util.Set;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@Builder
-@ToString
+import lombok.Data;
+
+
+@Data
 public class UtenteModel {
     private Long id;
     private String nome;
@@ -28,6 +24,4 @@ public class UtenteModel {
     // AMICO
     private Set<UtenteModel> amici;
     
-    private Set<EsperienzaLavorativaModel> esperienzeLavorative;
-    // ESPERIENZA LAVORATIVA 
 }

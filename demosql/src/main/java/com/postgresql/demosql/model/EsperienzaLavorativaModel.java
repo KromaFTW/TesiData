@@ -2,7 +2,7 @@ package com.postgresql.demosql.model;
 
 
 import java.util.Date;
-import java.util.Set;
+
 
 
 import lombok.Builder;
@@ -20,8 +20,10 @@ public class EsperienzaLavorativaModel {
     private String posizione;
     private String descrizione;
 
-    private Set<UtenteModel> utenti;
+    private AziendaModel azienda;
+    
+    private UtenteModel utente;
 
-    private Set<AziendaModel> aziende;
+    
 
 }   

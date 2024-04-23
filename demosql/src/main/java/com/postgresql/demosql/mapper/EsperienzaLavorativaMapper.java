@@ -15,10 +15,12 @@ public interface EsperienzaLavorativaMapper {
     
     EsperienzaLavorativaMapper INSTANCE = Mappers.getMapper(EsperienzaLavorativaMapper.class);
 
+    
     EsperienzaLavorativaModel entityToModel(EsperienzaLavorativa entity);
 
     List<EsperienzaLavorativaModel> entityToModelList(List<EsperienzaLavorativa> entitylist);
 
+    
     
     
 }

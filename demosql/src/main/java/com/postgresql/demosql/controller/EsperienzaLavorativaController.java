@@ -16,7 +16,7 @@ import com.postgresql.demosql.repository_Neo4j.EsperienzaLavorativaNeo4jReposito
 import com.postgresql.demosql.service.EsperienzaLavorativaService;
 
 @RestController
-@RequestMapping("/esperienzalavorativa")
+@RequestMapping("/esperienza")
 public class EsperienzaLavorativaController {
 
     private final EsperienzaLavorativaService esperienzaLavorativaService;

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import com.postgresql.demosql.entita.Competenza;
+import com.postgresql.demosql.mapper.CompetenzaMapper;
+import com.postgresql.demosql.model.CompetenzaModel;
 import com.postgresql.demosql.repository.CompetenzaRepository;
 
 @Service
@@ -15,8 +17,9 @@ public class CompetenzaService {
         this.competenzaRepository = competenzaRepository;
     }
 
-    public List<Competenza> getAllCompetenze(){
-        return competenzaRepository.findAll();
+    public List<CompetenzaModel> getAllCompetenze(){
+        List<Competenza> competenza = competenzaRepository.findAll();
+        return CompetenzaMapper.INSTANCE.entityToModelList(competenza);
     }
 
     public Competenza getCompetenzaById(Long id){

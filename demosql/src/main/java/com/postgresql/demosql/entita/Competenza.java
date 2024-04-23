@@ -1,11 +1,14 @@
 package com.postgresql.demosql.entita;
 
+import java.util.HashSet;
+import java.util.Set;
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -19,8 +22,7 @@ public class Competenza {
 
     private String nome;
 
-    @ManyToOne
-    @JoinColumn(name = "utente_id", referencedColumnName = "id")
-    private Utente utente_id;
+    @ManyToMany(mappedBy = "competenze")
+    private Set<Utente> utenti = new HashSet<>();
 
 }

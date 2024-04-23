@@ -21,6 +21,10 @@ public interface UtenteNeo4jMapper {
     // UtenteModel in UtenteNeo4j
     UtenteNeo4j modelToNeo4j(UtenteModel utenteModel);
     
+    // UtenteNeo4j in UtenteModel
+    UtenteModel Neo4jToModel(UtenteNeo4j utenteNeo4j);
+
+
     LuogoNeo4j map(LuogoModel value);
     
     // List UtenteModel --> List di UtenteNeo4j

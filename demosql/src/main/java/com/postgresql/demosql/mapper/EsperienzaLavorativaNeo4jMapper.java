@@ -21,4 +21,5 @@ public interface EsperienzaLavorativaNeo4jMapper {
     EsperienzaLavorativaNeo4j modelToNeo4j(EsperienzaLavorativaModel esperienzaModel);
 
     List<EsperienzaLavorativaNeo4j> modelListToNeo4jList(List<EsperienzaLavorativaModel> esperienzaModellista);
+
 }

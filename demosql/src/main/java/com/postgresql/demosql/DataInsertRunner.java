@@ -1,6 +1,7 @@
 package com.postgresql.demosql;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import java.io.InputStreamReader;
 import java.util.stream.Collectors;
 
 @Component
+@DependsOn("demosqlApplication")
 public class DataInsertRunner {
 
     private boolean runDataInsertEnabled = true;

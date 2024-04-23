@@ -1,7 +1,6 @@
 package com.postgresql.demosql.EntitaNeo4j;
 
 import java.util.Date;
-import java.util.Set;
 
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
@@ -12,7 +11,7 @@ import lombok.Data;
 
 
 @Data
-@Node("EsperienzaLavorativa")
+@Node("Esperienza_Lavorativa")
 public class EsperienzaLavorativaNeo4j {
 
     // ------ PROPERTY ------
@@ -34,11 +33,11 @@ public class EsperienzaLavorativaNeo4j {
     
     // ------- AZIENDA -------
     @Relationship(type = "AZIENDA")
+    private AziendaNeo4j azienda;
 
-    private Set<AziendaNeo4j> aziende;
     // ------- UTENTE -------
-    @Relationship(type = "LAVORATO_DA")
-    private Set<UtenteNeo4j> utenti;
+    @Relationship(type = "LAVORATO_DA", direction = Relationship.Direction.INCOMING)
+    private UtenteNeo4j utente;
 
 
     

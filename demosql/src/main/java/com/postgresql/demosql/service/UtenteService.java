@@ -35,4 +35,9 @@ public class UtenteService {
         return utenteRepo.save(utente);
     }
 
+    public Utente createUtenteModel(UtenteModel utente) {
+        Utente utente2 = UtenteMapper.INSTANCE.modelToEntity(utente);
+        return utenteRepo.save(utente2);
+    } 
+
 }

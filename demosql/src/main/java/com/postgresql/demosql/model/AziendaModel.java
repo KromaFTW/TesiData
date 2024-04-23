@@ -1,9 +1,6 @@
 package com.postgresql.demosql.model;
 
 
-import java.util.Set;
-
-
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,8 +13,7 @@ public class AziendaModel {
     private Long id;
     private String nome;
     private String settore;
-    private LuogoModel luogo_id; 
 
-    private Set<EsperienzaLavorativaModel> esperienzeLavorative;
+    private LuogoModel luogo_id; 
 
 }

@@ -17,7 +17,9 @@ public interface UtenteMapper {
     UtenteMapper INSTANCE = Mappers.getMapper(UtenteMapper.class);
     
     UtenteModel entityToModel(Utente entity);
-    // Utente modelToEntity(UtenteModel model);
+
+    Utente modelToEntity(UtenteModel model);
+
     List<UtenteModel> entityToModelList(List<Utente> entitylist);
 
 }

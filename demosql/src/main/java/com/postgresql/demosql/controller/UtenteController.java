@@ -32,11 +32,7 @@ public class UtenteController {
         this.utenteNeo4jMapper = utenteNeo4jMapper;
     }
     
-    @PostMapping("/salva")
-    public void salvaUtenteSuNeo4j(@RequestBody UtenteNeo4j utente) {
-        utenteNeo4jRepository.save(utente);
-    }
-    
+    // Riverso TUTTI gli utenti dal Relazionale al grafo 
     @PostMapping("/aggiungi")
     public void aggiungiNeo4j() {
         List<UtenteModel> utenti = utenteService.getAllUsers();
@@ -45,9 +41,13 @@ public class UtenteController {
 
     }
 
-    @PostMapping("/salvaTutto")
-    public void salvaUtentiSuNeo4j(@RequestBody List<UtenteNeo4j> utenti) {
-        utenteNeo4jRepository.saveAll(utenti);
+    // Salvo singolo Utente su entrambi i database
+    @PostMapping("/SalvoUtente")
+    public void SalvoUtente(@RequestBody UtenteModel utente) {
+        utenteService.createUtenteModel(utente);
+        UtenteNeo4j utenteSalvatoNeo = utenteNeo4jMapper.modelToNeo4j(utente);
+        utenteNeo4jRepository.save(utenteSalvatoNeo);
+    
     }
 
     @GetMapping
@@ -71,5 +71,18 @@ public class UtenteController {
     }
     
     
+    /*
+     
+    @PostMapping("/salva")
+    public void salvaUtenteSuNeo4j(@RequestBody UtenteNeo4j utente) {
+        utenteNeo4jRepository.save(utente);
+    }
+    
+     @PostMapping("/salvaTutto")
+    public void salvaUtentiSuNeo4j(@RequestBody List<UtenteNeo4j> utenti) {
+        utenteNeo4jRepository.saveAll(utenti);
+    }
+
+     */
 }   
 

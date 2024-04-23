@@ -43,9 +43,9 @@ public class UtenteNeo4j {
     private String genere;
 
     // ------ AMICI
-    @Relationship(type = "AMICO_DI")
+    @Relationship(type = "AMICO_DI", direction = Relationship.Direction.OUTGOING)
     private Set<UtenteNeo4j> amici;
-
+    
     // ------ LUOGO
     @Relationship(type = "VIVE_IN")
     private LuogoNeo4j luogo_id;
